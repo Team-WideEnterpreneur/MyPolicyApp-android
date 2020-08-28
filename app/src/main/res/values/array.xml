@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="educated_state">
+        <item>중졸 이하</item>
+        <item>고졸</item>
+        <item>대학 재학 중(2년제)</item>
+        <item>대학 재학 중(3년제)</item>
+        <item>대학 재학 중(4년제)</item>
+        <item>대졸(학사)</item>
+        <item>석사 학위</item>
+        <item>박사 학위</item>
+    </string-array>
+
+    <string-array name="policy_search_seed">
+        <item>조회순</item>
+        <item>업로드 순</item>
+        <item>마감 기한 순</item>
+        <item>지원금액 순</item>
+    </string-array>
+</resources>

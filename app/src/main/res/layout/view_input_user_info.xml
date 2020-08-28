@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.skfo763.my_data_app.ui.splash.SplashViewModel"/>
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fadeVisibility="@{viewModel.inputVisibility}"
+        tools:background="@drawable/gradient_splash">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/input_user_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/splash_file_icon"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="56dp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@id/splash_app_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_splash_file_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/splash_app_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gmarket_sans_bold"
+                android:text="@string/splash_app_title"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toTopOf="@id/user_info_personal_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/splash_file_icon" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_info_personal_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="36dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                spannableText="@{viewModel.inputPersonalTitle}"
+                app:layout_constraintBottom_toTopOf="@id/user_info_personal_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/splash_app_title"
+                tools:text="@string/input_user_personal_input_title" />
+
+            <View
+                android:id="@+id/user_info_personal_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:layout_marginTop="12dp"
+                app:layout_constraintBottom_toTopOf="@id/input_user_birth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_info_personal_title" />
+
+            <com.skfo763.my_data_app.component.CalendarTextView
+                android:id="@+id/input_user_birth"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toTopOf="@id/input_user_gender"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_info_personal_divider"
+                app:tv_title="@string/input_user_birth"
+                app:calendar_text="선택하기"/>
+
+            <com.skfo763.my_data_app.component.CheckBoxTextView
+                android:id="@+id/input_user_gender"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                app:tv_title="@string/input_user_gender"
+                app:tv_first_item_text="남자"
+                app:tv_second_item_text="여자"
+                app:layout_constraintTop_toBottomOf="@id/input_user_birth"
+                app:layout_constraintBottom_toTopOf="@id/input_user_educated_state"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.skfo763.my_data_app.component.SpinnerTextView
+                android:id="@+id/input_user_educated_state"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                app:layout_constraintBottom_toTopOf="@id/input_user_has_job"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_gender"
+                app:tv_title="@string/input_user_educated_state" />
+
+            <com.skfo763.my_data_app.component.CheckBoxTextView
+                android:id="@+id/input_user_has_job"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                app:layout_constraintBottom_toTopOf="@id/user_info_optional_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_educated_state"
+                app:tv_title="@string/input_user_has_job"
+                app:tv_first_item_text="취업"
+                app:tv_second_item_text="비취업"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/user_info_optional_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="36dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                spannableText="@{viewModel.inputOptionalTitle}"
+                app:layout_constraintBottom_toTopOf="@id/user_info_optional_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_has_job"
+                tools:text="@string/input_user_optional_input_title" />
+
+            <View
+                android:id="@+id/user_info_optional_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="12dp"
+                android:background="#ffffff"
+                app:layout_constraintBottom_toTopOf="@id/input_user_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_info_optional_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/input_user_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="20dp"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toTopOf="@id/input_user_health_insurance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_info_optional_divider"
+                android:text="@string/input_user_optional_description" />
+
+            <com.skfo763.my_data_app.component.CheckBoxTextView
+                android:id="@+id/input_user_health_insurance"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toTopOf="@id/input_user_income"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_description"
+                app:tv_title="@string/input_user_health_insurance"
+                app:tv_first_item_text="@string/input_user_confirm"
+                app:tv_second_item_text="@string/input_user_deny"/>
+
+            <com.skfo763.my_data_app.component.CheckBoxTextView
+                android:id="@+id/input_user_income"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                app:layout_constraintBottom_toTopOf="@id/input_user_employment_insurance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_health_insurance"
+                app:tv_title="@string/input_user_income"
+                app:tv_first_item_text="@string/input_user_confirm"
+                app:tv_second_item_text="@string/input_user_deny" />
+
+            <com.skfo763.my_data_app.component.CheckBoxTextView
+                android:id="@+id/input_user_employment_insurance"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                app:layout_constraintBottom_toTopOf="@id/input_user_double_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_income"
+                app:tv_title="@string/input_user_employment_insurence"
+                app:tv_first_item_text="@string/input_user_confirm"
+                app:tv_second_item_text="@string/input_user_deny" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/input_user_double_check"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                app:layout_constraintBottom_toTopOf="@id/input_user_complete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_employment_insurance"
+                android:text="@string/input_user_double_check" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/input_user_complete"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="56dp"
+                android:background="@drawable/rect_ffffff_24dp_0dp"
+                android:text="@string/input_user_complete_button"
+                android:onClick="@{(v) -> viewModel.onCompleteButtonClicked()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_user_double_check" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

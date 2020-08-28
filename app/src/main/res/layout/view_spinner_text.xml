@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="view"
+            type="com.skfo763.my_data_app.component.SpinnerTextView" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        tools:background="@drawable/gradient_splash">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/spinner_text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/spinner_text_spinner"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="최종학력" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_text_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:spinnerMode="dialog"
+            android:gravity="center"
+            android:background="@drawable/splash_spinner_background"
+            android:prompt="@string/input_user_educated_state"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

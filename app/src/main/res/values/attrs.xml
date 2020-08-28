@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GmarketFontTextView">
+        <attr name="font_style" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="BaseTextView">
+        <attr name="tv_title" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="CheckBoxTextView">
+        <attr name="tv_show_badge" format="boolean" />
+        <attr name="tv_url" format="string"/>
+        <attr name="tv_first_item_text" format="string"/>
+        <attr name="tv_second_item_text" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="CalendarTextView">
+        <attr name="calendar_text" format="string"/>
+    </declare-styleable>
+</resources>

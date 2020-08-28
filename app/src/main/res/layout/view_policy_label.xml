@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.skfo763.my_data_app.component.PolicyLabelView.Label"/>
+        <variable
+            name="view"
+            type="com.skfo763.my_data_app.component.PolicyLabelView" />
+    </data>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/label_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="1dp"
+        android:paddingBottom="1dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:textSize="10sp"
+        android:text="@{view.label.text}"
+        android:textColor="@{view.label.textColor}"
+        android:background="@{view.label.backgroundDrawable}"
+        tools:text="신청 마감"
+        tools:ignore="SmallSp" />
+</layout>

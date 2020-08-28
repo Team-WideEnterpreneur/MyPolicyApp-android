@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.skfo763.my_data_app.ui.maintab.data.PolicyItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/policy_item_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{(v) -> item.onClick.invoke(item)}">
+
+        <View
+            android:id="@+id/policy_item_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#323232"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/policy_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:text="@{item.title}"
+            android:textColor="#0070CA"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/policy_item_description"
+            app:layout_constraintEnd_toStartOf="@+id/policy_item_label"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="청년내일채움공제 (2020년)" />
+
+        <com.skfo763.my_data_app.component.PolicyLabelView
+            android:id="@+id/policy_item_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            labelType="@{item.label}"
+            app:layout_constraintBottom_toBottomOf="@+id/policy_item_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/policy_item_title"
+            app:layout_constraintTop_toTopOf="@+id/policy_item_title"
+            tools:text="신청마감" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/policy_item_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="64dp"
+            android:textColor="#323232"
+            android:textSize="13sp"
+            android:text="@{item.description}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/policy_item_title"
+            tools:text="중소, 중견기업 청년 근로자의\n장기근속과 자산형성 지원" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/ic_policy_navigate_next" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

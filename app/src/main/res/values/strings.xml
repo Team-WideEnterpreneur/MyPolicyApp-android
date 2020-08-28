@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">My-Data-App</string>
+
+    <!-- SplashActivity -->
+    <string name="splash_app_title">청년정책 골랐zip</string>
+    <string name="splash_app_description">내가 지원할 수 있는 청년 정책,\n쉽고 빠르게 찾아줄게요!</string>
+    <string name="splash_app_today_service_info">당신을 위한 %d개의 정책 정보!</string>
+    <string name="splash_app_team_info">2020 마이데이터 비즈니스 아이디어, 개발 공모전 출품작</string>
+    <string name="input_user_personal_input_title">앱을 시작하기 위해 필요해요</string>
+    <string name="input_user_optional_input_title">더 정책을 잘 찾기 위해 필요해요</string>
+    <string name="mandate_input">(필수 입력 사항)</string>
+    <string name="optional_input">(선택 입력 사항)</string>
+    <string name="input_user_birth">생년월일</string>
+    <string name="input_user_gender">성별</string>
+    <string name="input_user_educated_state">최종 학력</string>
+    <string name="input_user_has_job">취업여부</string>
+    <string name="input_user_optional_description">맞춤형 정책 분석 및 지원자격 판단, 선정 여부 예측을 위해 각 기관으로부터 정보 제공 동의가 필요합니다. 아래의 필요 정보 목록을 확인하시고 동의 여부를 체크해주세요.</string>
+    <string name="input_user_complete_button">맞춤 정책 찾으러 가기!</string>
+    <string name="input_user_double_check">입력해주셔서 감사합니다!\n빠진 정보가 없는지 다시 한번 확인해주세요!</string>
+    <string name="input_user_employment_insurence">고용보험 관련 정보</string>
+    <string name="input_user_income">소득분위 관련 정보</string>
+    <string name="input_user_health_insurance">건강보험 관련 정보</string>
+    <string name="input_user_confirm">동의</string>
+    <string name="input_user_deny">비동의</string>
+    <string name="policy_list_search_hint">검색어를 입력하세요</string>
+</resources>
