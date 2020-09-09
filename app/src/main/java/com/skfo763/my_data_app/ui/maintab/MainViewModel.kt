@@ -19,6 +19,7 @@ class MainViewModel : ViewModel() {
 
     val isLoading: LiveData<Boolean> = _isLoading
     val serviceList: LiveData<List<MainServiceType>> = _serviceList
+    var openMyData: Boolean = false
 
     fun getServiceList() {
         _isLoading.postValue(true)
@@ -42,4 +43,7 @@ class MainViewModel : ViewModel() {
             }
     }
 
+    fun goMyButtonClicked() {
+
+    }
 }

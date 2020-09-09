@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.skfo763.my_data_app"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -44,6 +44,7 @@ android {
 }
 
 dependencies {
+    implementation project(":storage")
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.1'

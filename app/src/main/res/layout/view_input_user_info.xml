@@ -194,7 +194,9 @@
                 app:layout_constraintTop_toBottomOf="@id/input_user_description"
                 app:tv_title="@string/input_user_health_insurance"
                 app:tv_first_item_text="@string/input_user_confirm"
-                app:tv_second_item_text="@string/input_user_deny"/>
+                app:tv_show_badge="true"
+                app:tv_info_url="https://www.nhis.or.kr/menu/retriveMenuSet.xx?menuId=B2200"
+                app:tv_confirm_url="https://si4n.nhis.or.kr/jpaa/JpAaa00101.do"/>
 
             <com.skfo763.my_data_app.component.CheckBoxTextView
                 android:id="@+id/input_user_income"
@@ -209,7 +211,9 @@
                 app:layout_constraintTop_toBottomOf="@id/input_user_health_insurance"
                 app:tv_title="@string/input_user_income"
                 app:tv_first_item_text="@string/input_user_confirm"
-                app:tv_second_item_text="@string/input_user_deny" />
+                app:tv_show_badge="true"
+                app:tv_info_url=""
+                app:tv_confirm_url=""/>
 
             <com.skfo763.my_data_app.component.CheckBoxTextView
                 android:id="@+id/input_user_employment_insurance"
@@ -224,7 +228,9 @@
                 app:layout_constraintTop_toBottomOf="@id/input_user_income"
                 app:tv_title="@string/input_user_employment_insurence"
                 app:tv_first_item_text="@string/input_user_confirm"
-                app:tv_second_item_text="@string/input_user_deny" />
+                app:tv_show_badge="true"
+                app:tv_info_url=""
+                app:tv_confirm_url=""/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/input_user_double_check"

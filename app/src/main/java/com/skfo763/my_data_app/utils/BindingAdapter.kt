@@ -43,26 +43,19 @@ object BindingAdapter {
             this.visibility = if(fadeVisibility.isVisible) View.VISIBLE else fadeVisibility.goneOrInVisible
             return
         }
-        
-        animate()
-            .alpha(if(fadeVisibility.isVisible) 1.0f else 0.0f)
-            .scaleX(if(fadeVisibility.isVisible) 1.0f else 0.0f)
-            .scaleY(if(fadeVisibility.isVisible) 1.0f else 0.0f)
-            .setInterpolator(DecelerateInterpolator())
-            .setDuration(fadeVisibility.duration)
-            .setListener(object: Animator.AnimatorListener {
-                override fun onAnimationStart(animation: Animator?) = Unit
 
-                override fun onAnimationEnd(animation: Animator?) {
-                    this@setVisibilityWithFadeAnimation.visibility =
-                        if(fadeVisibility.isVisible) View.VISIBLE else fadeVisibility.goneOrInVisible
-                    fadeVisibility.onAnimationEnd?.invoke()
-                }
-
-                override fun onAnimationCancel(animation: Animator?) = Unit
-
-                override fun onAnimationRepeat(animation: Animator?) = Unit
-            }).start()
+        this.visibility = View.VISIBLE
+        if(fadeVisibility.isVisible) {
+            alpha = 0f
+            animate().alpha(1f).withEndAction {
+                fadeVisibility.onAnimationEnd?.invoke()
+            }.setStartDelay(100L).start()
+        } else {
+            alpha = 1f
+            animate().alpha(0f).withEndAction {
+                fadeVisibility.onAnimationEnd?.invoke()
+            }.setStartDelay(100L).start()
+        }
     }
 
     @JvmStatic

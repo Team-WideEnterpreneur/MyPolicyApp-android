@@ -35,7 +35,7 @@
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_marginBottom="4dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginLeft="2dp"
             android:visibility="@{view.showBadge ? View.VISIBLE : View.GONE}"
             android:onClick="@{(v) -> view.onTitleClicked()}"
             app:srcCompat="@drawable/ic_splash_help_outline"

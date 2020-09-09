@@ -1,2 +1,5 @@
+include ':storage'
+include ':data-converter-processor'
+include ':data-converter-annotation'
 include ':app'
 rootProject.name = "My-Data-App"

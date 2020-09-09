@@ -2,7 +2,6 @@ package com.skfo763.my_data_app.ui.splash
 
 import android.graphics.Color
 import android.text.SpannableStringBuilder
-import android.view.View
 import android.view.View.GONE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -34,7 +33,6 @@ class SplashViewModel(private val view: ISplashView): ViewModel() {
     val inputVisibility: LiveData<FadeVisibility> = _inputVisibility
     val inputPersonalTitle: LiveData<SpannableStringBuilder> = _inputPersonalTitle
     val inputOptionalTitle: LiveData<SpannableStringBuilder> = _inputOptionalTitle
-
 
     fun initializeApplication() {
         compositeDisposable += Observable.interval(0, 1, TimeUnit.MILLISECONDS)

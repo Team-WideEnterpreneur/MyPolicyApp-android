@@ -11,10 +11,12 @@
             type="com.skfo763.my_data_app.ui.maintab.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/main_motionLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.maintab.MainActivity">
+        tools:context=".ui.maintab.MainActivity"
+        app:layoutDescription="@xml/activity_main_scene">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/main_appbar_layout"
@@ -46,6 +48,7 @@
             fragmentList="@{viewModel.serviceList}" />
 
         <FrameLayout
+            android:id="@+id/main_frameLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
@@ -55,11 +58,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:visibility="gone">
             <ProgressBar
+                android:id="@+id/main_progressbar"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"/>
         </FrameLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/main_tab_my_data"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="32dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/main_tab_my_data_icon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:padding="12dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="32dp"
+            android:elevation="5dp"
+            android:background="@drawable/circle_2849ff_0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_splash_file_icon"/>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </layout>
