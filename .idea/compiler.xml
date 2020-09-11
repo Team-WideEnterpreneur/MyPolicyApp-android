@@ -5,6 +5,7 @@
       <module name="annotations" target="1.7" />
       <module name="data-converter-annotation" target="1.7" />
       <module name="data-converter-processor" target="1.7" />
+      <module name="intent-generator" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

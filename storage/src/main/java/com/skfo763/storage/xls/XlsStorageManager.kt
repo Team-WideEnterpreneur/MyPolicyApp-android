@@ -2,8 +2,11 @@ package com.skfo763.storage.xls
 
 import android.content.Context
 import android.net.Uri
+import android.os.Environment
 import android.util.Log
 import android.widget.Toast
+import androidx.core.content.FileProvider
+import com.skfo763.storage.file.LegacyFileManager
 import com.skfo763.xlsconvert.generated.getColumnList
 import org.apache.poi.hssf.usermodel.HSSFSheet
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
@@ -32,18 +35,13 @@ class XlsStorageManager(private val context: Context) {
     }
 
     fun saveExcel(filename: String): Uri? {
-        val file = File(context.getExternalFilesDir(null), filename)
+        val xlsFile = File(context.getExternalFilesDir("documents"), filename)
         try {
-            FileOutputStream(file).apply {
-                workbook.write(this)
-            }
+            workbook.write(FileOutputStream(xlsFile))
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        Toast.makeText(context, file.absolutePath +"에 저장되었습니다", Toast.LENGTH_SHORT).show()
-        Log.d("hellohello", "${file.absolutePath} 에 저장되었습니다")
-
-        return Uri.fromFile(file)
+        return FileProvider.getUriForFile(context, "com.skfo763.my_data_app.fileProvider", xlsFile)
     }
 
     private fun addHeader(sheet: HSSFSheet, value: MyPolicyData) {

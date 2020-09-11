@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.skfo763.my_data_app.ui.mydata.data.MyDataHeader" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/my_data_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:textColor="#3957FF"
+            android:textSize="16sp"
+            android:layout_marginLeft="16dp"
+            android:text="@{item.title}"
+            app:layout_constraintBottom_toTopOf="@+id/my_data_header_count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="000님의 정책 신청/열람 내역" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/my_data_header_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:text="@{item.countString}"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/my_data_header_desc_1"
+            app:layout_constraintEnd_toStartOf="@+id/my_data_header_switch"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/my_data_header_title"
+            app:layout_constraintTop_toBottomOf="@+id/my_data_header_title"
+            tools:text="총 3건" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/my_data_header_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:textOn="@string/item_my_data_switch_on"
+            android:textOff="@string/item_my_data_switch_off"
+            onSwitchChanged="@{item.onSwitchChanged}"
+            app:trackTint="#9ACCFF"
+            app:thumbTint="#BA2849FF"
+            app:layout_constraintBottom_toBottomOf="@+id/my_data_header_count"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/my_data_header_count" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/my_data_header_desc_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@{item.firstDescription}"
+            android:textColor="#808080"
+            app:layout_constraintBottom_toTopOf="@+id/my_data_header_desc_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/my_data_header_title"
+            app:layout_constraintTop_toBottomOf="@+id/my_data_header_count"
+            tools:text="신청 및 열람하신 정책 내역입니다." />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/my_data_header_desc_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#808080"
+            android:text="@{item.secondDescription}"
+            app:layout_constraintBottom_toTopOf="@+id/my_data_header_download_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_data_header_desc_1"
+            tools:text="다운로드 버튼을 눌러 소득, 건강보험료 정보를 다운로드하세요!" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/my_data_header_download_btn"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_margin="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/rect_ba2849ff_24dp_0dp"
+            android:onClick="@{(v) ->item.onDownloadBtnClicked.invoke(item)}"
+            app:layout_constraintBottom_toTopOf="@id/my_data_header_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_data_header_desc_2"
+            tools:text="다운로드" />
+
+        <View
+            android:id="@+id/my_data_header_divider"
+            android:layout_width="48dp"
+            android:layout_height="4dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/divider_round_323232"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/my_data_header_download_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

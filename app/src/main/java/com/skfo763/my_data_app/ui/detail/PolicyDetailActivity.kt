@@ -1,6 +1,5 @@
 package com.skfo763.my_data_app.ui.detail
 
-import android.R.attr.path
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +11,6 @@ import com.skfo763.my_data_app.R
 import com.skfo763.my_data_app.databinding.ActivityPolicyDetailBinding
 import com.skfo763.storage.xls.MyPolicyData
 import com.skfo763.storage.xls.XlsStorageManager
-
 
 class PolicyDetailActivity : AppCompatActivity() {
 
@@ -28,14 +26,14 @@ class PolicyDetailActivity : AppCompatActivity() {
         val xlsManager = XlsStorageManager(this)
         xlsManager.setSheet("테스트 시트")
         xlsManager.setRow(it, "테스트 시트")
-        val uri = xlsManager.saveExcel("file_test")
+        val uri = xlsManager.saveExcel("file_test.xls")
 
         uri?.let {
-            Intent(Intent.ACTION_SEND).apply {
+            val intent = Intent(Intent.ACTION_SEND).apply {
                 type = "application/excel"
-                putExtra(Intent.EXTRA_STREAM, path)
-                startActivity(Intent.createChooser(this, "엑셀 내보내기"))
+                putExtra(Intent.EXTRA_STREAM, it)
             }
+            startActivity(Intent.createChooser(intent, "엑셀 내보내기"))
         }
     }
 

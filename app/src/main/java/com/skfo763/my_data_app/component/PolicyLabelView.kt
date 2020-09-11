@@ -6,13 +6,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.skfo763.my_data_app.R
-import com.skfo763.my_data_app.databinding.ViewPolicyLabelBinding
-import com.skfo763.my_data_app.ext.DP
 import com.skfo763.my_data_app.ext.getGradientDrawable
 import com.skfo763.my_data_app.ext.toColor
 
@@ -20,7 +16,7 @@ class PolicyLabelView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : AppCompatTextView(context, attributeSet, defStyleAttr) {
+) : ConstraintLayout(context, attributeSet, defStyleAttr) {
 
     enum class LabelType(
         val text: String,
@@ -48,30 +44,33 @@ class PolicyLabelView @JvmOverloads constructor(
         val isBlink: Boolean
             get() = type.isBlink
 
-        val blinkDuration: Long = 3000L
+        val blinkDuration: Long = 500L
     }
 
-    private val binding = ViewPolicyLabelBinding.inflate(
-        LayoutInflater.from(context), null, true)
+    private val labelView: AppCompatTextView
 
-    private val _label = MutableLiveData<Label>()
-
-    val label: LiveData<Label> = _label
+    var label: Label? = null
+        set(value) {
+            value?.let {
+                labelView.text = it.text
+                labelView.setTextColor(it.textColor)
+                labelView.background = it.backgroundDrawable
+                labelView.visibility = View.VISIBLE
+            } ?: run {
+                labelView.visibility = View.GONE
+            }
+            field = value
+        }
 
     init {
-        binding.view = this
-        binding.lifecycleOwner = context as AppCompatActivity
-    }
-
-    fun setLabel(label: Label?) {
-        binding.labelView.visibility = if(label != null) View.VISIBLE else View.GONE
-        _label.value = label
+        LayoutInflater.from(context).inflate(R.layout.view_policy_label, this, true)
+        labelView = findViewById(R.id.label_view)
     }
 
     fun startBlinkAnimation(blink: Boolean, blinkDuration: Long) {
         val anim = AnimationUtils.loadAnimation(context, R.anim.anim_label_blink).apply {
             duration = blinkDuration
         }
-        if(blink) binding.labelView.startAnimation(anim)
+        if(blink) labelView.startAnimation(anim)
     }
 }

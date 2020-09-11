@@ -5,8 +5,10 @@ import android.text.SpannableStringBuilder
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.ArrayAdapter
+import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatSpinner
+import androidx.appcompat.widget.SwitchCompat
 import androidx.databinding.BindingAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.skfo763.my_data_app.R
@@ -69,11 +71,10 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("labelType")
     fun PolicyLabelView.setLabelType(labelType: PolicyLabelView.LabelType) {
-        PolicyLabelView.Label(labelType, 6.DP(context)).let {
-            setLabel(it)
+        PolicyLabelView.Label(labelType, 6.DP(context)).also {
+            this.label = it
             startBlinkAnimation(it.isBlink, it.blinkDuration)
         }
-
     }
 
     @JvmStatic
@@ -81,6 +82,14 @@ object BindingAdapter {
     fun AppCompatSpinner.setItems(items: List<String>) {
         this.adapter = ArrayAdapter(context, R.layout.item_splash_spinner_hint, items).apply {
             setDropDownViewResource(R.layout.item_splash_spinner)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("onSwitchChanged")
+    fun SwitchCompat.onSwitchChanged(onSwitchChanged: (CompoundButton, Boolean) -> Unit) {
+        setOnCheckedChangeListener { buttonView, isChecked ->
+            onSwitchChanged(buttonView, isChecked)
         }
     }
 }

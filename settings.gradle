@@ -1,3 +1,4 @@
+include ':intent-generator'
 include ':storage'
 include ':data-converter-processor'
 include ':data-converter-annotation'
