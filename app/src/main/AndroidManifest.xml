@@ -15,7 +15,6 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.detail.PolicyDetailActivity" />
-        <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

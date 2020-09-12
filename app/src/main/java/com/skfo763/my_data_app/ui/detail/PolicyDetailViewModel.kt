@@ -1,33 +1,21 @@
 package com.skfo763.my_data_app.ui.detail
 
-import android.view.View
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.skfo763.storage.xls.MyPolicyData
+import androidx.lifecycle.ViewModelProvider
+import com.skfo763.my_data_app.R
 
-class PolicyDetailViewModel : ViewModel() {
+class PolicyDetailViewModel(private val view: IPolicyDetailView) : ViewModel() {
 
-    val hello = MutableLiveData<List<MyPolicyData>>()
-
-    fun onTestButtonClicked(view: View) {
-        hello.value = listOf(
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData(),
-            MyPolicyData()
-        )
+    class Factory(private val iView: IPolicyDetailView) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return PolicyDetailViewModel(iView) as T
+        }
     }
+
+    private val _infoTabList = MutableLiveData(view.getArrayListRes(R.array.policy_info_tab_list))
+
+
+    val infoTabList: LiveData<List<String>> get() = _infoTabList
 }

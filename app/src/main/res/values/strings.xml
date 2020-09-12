@@ -25,4 +25,11 @@
     <string name="item_my_data_switch_on">횟수 표시</string>
     <string name="item_my_data_switch_off">횟수 미표시</string>
     <string name="my_data_footer_string">각 정책별 상세 정보는 제공 기관별 홈페이지, 워크넷 등을 참조하세요</string>
+    <string name="support_file_type_dialog_title">다운로드 형식 선택</string>
+    <string name="item_my_data_listitem_download">내 지원정보 다운로드</string>
+    <string name="my_data_title">내 정책 정보</string>
+    <string name="my_data_header_download">다운로드</string>
+    <string name="my_data_list_title_title">내가 열람/신청한 정보 목록</string>
+    <string name="set_alarm">알림 설정</string>
+    <string name="register_policy">지원하기</string>
 </resources>

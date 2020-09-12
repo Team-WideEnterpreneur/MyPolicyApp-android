@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/my_data_list_title_title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#323232"/>
+</layout>

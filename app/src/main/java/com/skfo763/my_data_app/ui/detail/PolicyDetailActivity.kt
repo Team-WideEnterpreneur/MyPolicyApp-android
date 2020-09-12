@@ -9,10 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.skfo763.my_data_app.R
 import com.skfo763.my_data_app.databinding.ActivityPolicyDetailBinding
-import com.skfo763.storage.xls.MyPolicyData
+import com.skfo763.storage.xls.XlsMyInfoData
 import com.skfo763.storage.xls.XlsStorageManager
 
-class PolicyDetailActivity : AppCompatActivity() {
+class PolicyDetailActivity : AppCompatActivity(), IPolicyDetailView {
 
     companion object {
         @JvmStatic
@@ -20,21 +20,8 @@ class PolicyDetailActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityPolicyDetailBinding
-    private val viewModel by viewModels<PolicyDetailViewModel>()
-
-    private val onTestButtonClicked: (List<MyPolicyData>) -> Unit = {
-        val xlsManager = XlsStorageManager(this)
-        xlsManager.setSheet("테스트 시트")
-        xlsManager.setRow(it, "테스트 시트")
-        val uri = xlsManager.saveExcel("file_test.xls")
-
-        uri?.let {
-            val intent = Intent(Intent.ACTION_SEND).apply {
-                type = "application/excel"
-                putExtra(Intent.EXTRA_STREAM, it)
-            }
-            startActivity(Intent.createChooser(intent, "엑셀 내보내기"))
-        }
+    private val viewModel by viewModels<PolicyDetailViewModel> {
+        PolicyDetailViewModel.Factory(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +30,13 @@ class PolicyDetailActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        binding.policyDetailInfoView.viewModel = viewModel
+        binding.policyDetailInfoView.lifecycleOwner = this
+
         setSupportActionBar(binding.policyDetailToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
-
-        viewModel.hello.observe(this, Observer(onTestButtonClicked))
     }
+
+    override fun getArrayListRes(resId: Int) = resources.getStringArray(resId).toList()
 
 }

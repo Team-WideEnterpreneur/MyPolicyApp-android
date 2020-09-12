@@ -19,11 +19,20 @@ class BadgeTabLayout @JvmOverloads constructor(
         this.pager = pager
     }
 
-    fun attachTabLayout(serviceList: List<MainServiceType>) {
+    fun attachServiceTabLayout(serviceList: List<MainServiceType>) {
         if(serviceList.isEmpty()) return
         pager?.let {
             TabLayoutMediator(this, it) { tab, pos ->
                 tab.text = serviceList[pos].tabName
+            }.attach()
+        }
+    }
+
+    fun attachPolicyInfoTabLayout(policyInfo: List<String>) {
+        if(policyInfo.isEmpty()) return
+        pager?.let {
+            TabLayoutMediator(this, it) { tab, pos ->
+                tab.text = policyInfo[pos]
             }.attach()
         }
     }

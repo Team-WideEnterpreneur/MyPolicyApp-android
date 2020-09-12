@@ -29,6 +29,7 @@ class PolicyLabelView @JvmOverloads constructor(
         TYPE_EXPIRED("신청마감", "#BEBEBE", isBlink = false),
         TYPE_ON_AIR("신청중", "#FFCC33"),
         TYPE_WAITING( "신청대기", "#DFC197"),
+        TYPE_MY_DATA("마이데이터", "#FFCC33", isBlink = false)
     }
 
     class Label(val type: LabelType, private val labelRadius: Float) {

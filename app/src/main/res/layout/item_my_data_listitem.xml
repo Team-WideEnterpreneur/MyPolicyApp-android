@@ -12,83 +12,86 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="23dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="18dp"
         app:cardBackgroundColor="#7A8FFF">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/my_data_item_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:onClick="@{(v) -> item.onItemClicked}">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/my_data_item_category"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="4dp"
+                android:text="@{item.category}"
                 android:textColor="#FFEB3B"
                 android:textSize="13sp"
-                android:layout_marginTop="24dp"
-                android:text="@{item.category}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="title"
-                app:layout_constraintVertical_bias="0.56"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintBottom_toTopOf="@+id/my_data_item_title"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="16dp"
                 tools:text="주거복지" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/my_data_item_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:text="@{item.title}"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
-                android:layout_marginTop="8dp"
-                android:text="@{item.title}"
-                app:layout_constraintBottom_toTopOf="@+id/my_data_item_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/my_data_item_label"
                 app:layout_constraintTop_toBottomOf="@+id/my_data_item_category"
+                tools:layout_editor_absoluteX="16dp"
                 tools:text="중소기업 취업 청년 전세자금대출" />
 
             <com.skfo763.my_data_app.component.PolicyLabelView
                 android:id="@+id/my_data_item_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                labelType="@{item.labelType}"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                labelType="@{item.labelType}"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/my_data_item_title" />
+                app:layout_constraintBottom_toTopOf="@+id/my_data_item_download"
+                app:layout_constraintTop_toBottomOf="@+id/my_data_item_title"
+                tools:layout_editor_absoluteX="16dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/my_data_item_download"
-                android:layout_width="0dp"
+                android:layout_width="355dp"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_baseline_cloud_download_24"
                 android:drawablePadding="4dp"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
-                android:layout_marginBottom="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/item_my_data_listitem_download"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/my_data_item_label"
-                app:layout_constraintVertical_bias="1.0"
-                tools:text="내 자격정보 다운로드" />
+                tools:layout_editor_absoluteX="16dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

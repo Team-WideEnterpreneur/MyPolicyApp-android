@@ -1,9 +1,7 @@
 package com.skfo763.my_data_app.utils
 
-import android.animation.Animator
 import android.text.SpannableStringBuilder
 import android.view.View
-import android.view.animation.DecelerateInterpolator
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
 import android.widget.TextView
@@ -16,6 +14,7 @@ import com.skfo763.my_data_app.commondata.FadeVisibility
 import com.skfo763.my_data_app.component.BadgeTabLayout
 import com.skfo763.my_data_app.component.PolicyLabelView
 import com.skfo763.my_data_app.ext.DP
+import com.skfo763.my_data_app.ui.detail.data.PolicyInfoTab
 import com.skfo763.my_data_app.ui.maintab.adapter.MainPagerAdapter
 import com.skfo763.my_data_app.ui.maintab.data.MainServiceFragmentList
 import com.skfo763.my_data_app.ui.maintab.data.MainServiceType
@@ -31,9 +30,21 @@ object BindingAdapter {
     }
 
     @JvmStatic
+    @BindingAdapter("infoList")
+    fun ViewPager2.setPolicyTab(serviceList: List<PolicyInfoTab>) {
+
+    }
+
+    @JvmStatic
     @BindingAdapter("tabList")
     fun BadgeTabLayout.setTabList(tabList: List<MainServiceType>) {
-        attachTabLayout(tabList)
+        attachServiceTabLayout(tabList)
+    }
+
+    @JvmStatic
+    @BindingAdapter("policyInfoList")
+    fun BadgeTabLayout.setPolicyInfoTabList(tabList: List<String>) {
+        attachPolicyInfoTabLayout(tabList)
     }
 
     @JvmStatic

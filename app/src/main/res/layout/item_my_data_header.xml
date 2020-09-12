@@ -18,7 +18,7 @@
             android:id="@+id/my_data_header_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="20dp"
             android:textColor="#3957FF"
             android:textSize="16sp"
             android:layout_marginLeft="16dp"
@@ -96,12 +96,12 @@
             android:layout_margin="16dp"
             android:textColor="#ffffff"
             android:background="@drawable/rect_ba2849ff_24dp_0dp"
+            android:text="@string/my_data_header_download"
             android:onClick="@{(v) ->item.onDownloadBtnClicked.invoke(item)}"
             app:layout_constraintBottom_toTopOf="@id/my_data_header_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_data_header_desc_2"
-            tools:text="다운로드" />
+            app:layout_constraintTop_toBottomOf="@+id/my_data_header_desc_2" />
 
         <View
             android:id="@+id/my_data_header_divider"
