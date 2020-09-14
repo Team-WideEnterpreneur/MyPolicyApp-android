@@ -100,6 +100,41 @@
 
         </androidx.core.widget.NestedScrollView>
 
+        <LinearLayout
+            android:id="@+id/policy_info_button_container"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/policy_info_pager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/policy_info_register"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="#9E9E9E"
+                android:textSize="15sp"
+                android:textColor="#323232"
+                android:onClick="@{(v) -> viewModel.onRegisterButtonClicked()}"
+                android:text="@string/register_policy"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/policy_info_set_alarm"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="#F8D524"
+                android:textColor="#323232"
+                android:textSize="15sp"
+                android:onClick="@{(v) -> viewModel.onNotifySetButtonClicked()}"
+                android:text="@string/set_alarm"/>
+
+        </LinearLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

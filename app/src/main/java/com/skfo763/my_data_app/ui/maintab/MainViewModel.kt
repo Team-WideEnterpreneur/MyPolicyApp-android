@@ -3,14 +3,23 @@ package com.skfo763.my_data_app.ui.maintab
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.skfo763.my_data_app.extension.plusAssign
 import com.skfo763.my_data_app.ui.maintab.data.MainServiceType
+import com.skfo763.repository.PolicyRepository
+import com.skfo763.repository.UserRepository
+import com.skfo763.storage.xls.XlsStorageManager
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit
 
 class MainViewModel : ViewModel() {
+
+    class Factory: ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>) =
+            MainViewModel() as T
+    }
 
     private val compositeDisposable = CompositeDisposable()
 

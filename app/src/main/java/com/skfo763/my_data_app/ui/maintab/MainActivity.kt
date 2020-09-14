@@ -15,6 +15,7 @@ import com.skfo763.my_data_app.R
 import com.skfo763.my_data_app.databinding.ActivityMainBinding
 import com.skfo763.my_data_app.ui.maintab.adapter.MainPagerAdapter
 import com.skfo763.my_data_app.ui.mydata.MyDataFragment
+import com.skfo763.storage.xls.XlsStorageManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainViewModel> { MainViewModel.Factory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.skfo763.my_data_app.R
 import com.skfo763.my_data_app.databinding.FragmentBasePolicyCategoryBinding
 import com.skfo763.my_data_app.ui.maintab.fragment.base.BasePolicyCategoryFragment
+import com.skfo763.storage.xls.XlsStorageManager
 
 class AllPolicyFragment : BasePolicyCategoryFragment<FragmentBasePolicyCategoryBinding>() {
 

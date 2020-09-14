@@ -1,22 +1,35 @@
 package com.skfo763.my_data_app.ui.splash
 
-import android.graphics.Color
 import android.text.SpannableStringBuilder
 import android.view.View.GONE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.skfo763.my_data_app.commondata.FadeVisibility
-import com.skfo763.my_data_app.ext.setColorSpan
-import com.skfo763.my_data_app.ext.setSizeSpan
 import com.skfo763.my_data_app.extension.log
 import com.skfo763.my_data_app.extension.plusAssign
+import com.skfo763.my_data_app.makeUserData
+import com.skfo763.repository.UserRepository
+import com.skfo763.repository.data.UserData
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import java.util.concurrent.TimeUnit
 
-class SplashViewModel(private val view: ISplashView): ViewModel() {
+class SplashViewModel(
+    private val view: ISplashView,
+    private val repository: UserRepository
+): ViewModel() {
+
+    class Factory(private val iView: ISplashView) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return SplashViewModel(
+                iView,
+                UserRepository()
+            ) as T
+        }
+    }
     
     private val compositeDisposable = CompositeDisposable()
 
@@ -36,7 +49,7 @@ class SplashViewModel(private val view: ISplashView): ViewModel() {
 
     fun initializeApplication() {
         compositeDisposable += Observable.interval(0, 1, TimeUnit.MILLISECONDS)
-            .take(2432)
+            .take(1322)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
                 _inputPersonalTitle.value = makeInputUserTitleSpan(
@@ -63,6 +76,7 @@ class SplashViewModel(private val view: ISplashView): ViewModel() {
         title: String,
         subtitle: String
     ) = SpannableStringBuilder(title + subtitle).apply {
+        /*
         val titlePoint = 0 to title.length - 1
         val subtitlePoint = title.length to title.length + subtitle.length - 1
 
@@ -70,6 +84,7 @@ class SplashViewModel(private val view: ISplashView): ViewModel() {
         setColorSpan(Color.parseColor("#ffffff"), subtitlePoint.first, subtitlePoint.second)
 
         setSizeSpan(0.8f, subtitlePoint.first, subtitlePoint.second)
+         */
     }
 
 
@@ -80,6 +95,12 @@ class SplashViewModel(private val view: ISplashView): ViewModel() {
     }
 
     fun onCompleteButtonClicked() {
-        view.moveOnToMainActivity()
+        compositeDisposable += repository.registerUser(makeUserData())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                view.moveOnToMainActivity()
+            }) {
+                it.printStackTrace()
+            }
     }
 }

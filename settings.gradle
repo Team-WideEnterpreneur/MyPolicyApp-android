@@ -1,3 +1,6 @@
+include ':repository'
+include ':fcm-notification'
+include ':remote'
 include ':intent-generator'
 include ':storage'
 include ':data-converter-processor'

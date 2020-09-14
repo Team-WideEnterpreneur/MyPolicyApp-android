@@ -1,12 +1,12 @@
 package com.skfo763.my_data_app.ui.detail.adapter
 
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.skfo763.my_data_app.base.BaseRecyclerAdapter
-import com.skfo763.my_data_app.base.BaseViewHolder
+import com.skfo763.my_data_app.ui.detail.PolicyDetailViewModel
 import com.skfo763.my_data_app.ui.detail.data.PolicyDetailInfo
 import com.skfo763.my_data_app.ui.detail.data.PolicyDetailTabData
 import com.skfo763.my_data_app.ui.detail.data.PolicyRequirement
-import java.lang.IllegalStateException
 
 class PolicyInfoTabAdapter: BaseRecyclerAdapter<PolicyDetailTabData>() {
 
@@ -15,21 +15,28 @@ class PolicyInfoTabAdapter: BaseRecyclerAdapter<PolicyDetailTabData>() {
         TYPE_REQUIREMENT(1)
     }
 
+    fun setTabList(list: List<PolicyDetailTabData>) {
+        this.dataList.clear()
+        this.dataList.addAll(list)
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseViewHolder<PolicyDetailTabData> {
-        val holder = when(viewType) {
-            ViewType.TYPE_DETAIL.type -> DetailInfoViewHolder.instance(parent, viewType)
-            ViewType.TYPE_REQUIREMENT.type -> RequirementViewHolder.instance(parent, viewType)
+    ): RecyclerView.ViewHolder {
+        return when(viewType) {
+            ViewType.TYPE_DETAIL.type -> DetailInfoViewHolder.instance(parent)
+            ViewType.TYPE_REQUIREMENT.type -> RequirementViewHolder.instance(parent)
             else -> throw IllegalStateException("wrong view type")
         }
-
-        return holder
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<PolicyDetailTabData>, position: Int) {
-        holder.setData(dataList[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when(holder) {
+            is DetailInfoViewHolder -> holder.setData(dataList[position] as PolicyDetailInfo)
+            is RequirementViewHolder -> holder.setData(dataList[position] as PolicyRequirement)
+        }
     }
 
     override fun getItemViewType(position: Int) = when(dataList[position]) {

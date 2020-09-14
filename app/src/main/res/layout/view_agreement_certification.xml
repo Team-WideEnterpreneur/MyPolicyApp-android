@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.skfo763.my_data_app.ui.agreement.AgreementViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#5B000000"
+        visibilityUpDown="@{viewModel.certVisibility}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_half_card_white">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/public_cert_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/agreement_public_cert_title"
+                android:textColor="#323232"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/public_cert_disk" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/public_cert_disk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_baseline_computer_24"
+                android:text="@string/agreement_certification_harddisk"
+                android:textColor="#323232"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/public_cert_usb"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/public_cert_title"
+                app:layout_constraintBottom_toTopOf="@id/public_cert_list" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/public_cert_usb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_baseline_usb_24"
+                android:text="@string/agreement_certification_usb"
+                android:textColor="#323232"
+                app:layout_constraintBottom_toBottomOf="@+id/public_cert_disk"
+                app:layout_constraintEnd_toStartOf="@+id/public_cert_phone"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/public_cert_disk"
+                app:layout_constraintTop_toTopOf="@+id/public_cert_disk" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/public_cert_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@drawable/ic_baseline_smartphone_24"
+                android:drawablePadding="4dp"
+                android:text="@string/agreement_certification_phone"
+                android:textColor="#323232"
+                app:layout_constraintBottom_toBottomOf="@+id/public_cert_disk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/public_cert_usb"
+                app:layout_constraintTop_toTopOf="@+id/public_cert_disk" />
+
+            <TableLayout
+                android:id="@+id/public_cert_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/bg_border_line_000000"
+                android:layout_marginBottom="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/public_cert_disk"
+                app:layout_constraintBottom_toTopOf="@+id/public_cert_password_title" >
+
+                <TableRow
+                    android:background="@drawable/bg_border_line_000000_f2f2f2"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="구분"
+                        android:textColor="#323232"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="사용자"
+                        android:textColor="#323232"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="만료일"
+                        android:textColor="#323232"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="발급자"
+                        android:textColor="#323232"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/view_agreement_test_cert"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    rowBackground="@{viewModel.rowBackGround}">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="은행개인" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.7"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="서창연(J002000402016021703432)" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="2021-03-29" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="금융결제원" />
+                </TableRow>
+
+            </TableLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/public_cert_password_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/agreement_certification_password_title"
+                android:textColor="#323232"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintEnd_toStartOf="@+id/public_cert_password"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/public_cert_list"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/public_cert_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rect_ffffff_6dp_1dp"
+                android:hint="@string/agreement_certification_password_title"
+                android:paddingLeft="4dp"
+                android:paddingTop="8dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@+id/public_cert_password_title"
+                app:layout_constraintEnd_toStartOf="@+id/public_cert_password_confirm"
+                app:layout_constraintStart_toEndOf="@+id/public_cert_password_title"
+                app:layout_constraintTop_toTopOf="@+id/public_cert_password_title" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/public_cert_password_confirm"
+                android:layout_width="80dp"
+                android:layout_height="36dp"
+                android:text="@string/confirm"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="20dp"
+                android:onClick="@{(v) -> viewModel.onCertifyClicked(v)"
+                app:layout_constraintBottom_toBottomOf="@+id/public_cert_password_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/public_cert_password"
+                app:layout_constraintTop_toTopOf="@+id/public_cert_password_title" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:onClick="@{(v) -> viewModel.onPublicCertCancelClicked(v)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_baseline_close_24"/>
+        
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

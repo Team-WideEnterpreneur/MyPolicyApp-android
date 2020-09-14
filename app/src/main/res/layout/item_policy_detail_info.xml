@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.skfo763.my_data_app.ui.detail.data.PolicyDetailInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_category_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/item_policy_detail_category_title"
+            android:textColor="#323232"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/item_policy_detail_category"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_policy_detail_category" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_category"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@{item.category}"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/item_policy_detail_supports"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_policy_detail_category_title"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="취업지원, 교육훈련, 체험, 인턴" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_supports_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/item_policy_detail_supports_title"
+            android:textColor="#323232"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/item_policy_detail_supports"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_policy_detail_supports" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_supports"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@{item.supports}"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/item_policy_detail_volume"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_policy_detail_supports_title"
+            app:layout_constraintTop_toBottomOf="@+id/item_policy_detail_category" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_volume_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/item_policy_detail_volume_title"
+            android:textColor="#323232"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/item_policy_detail_volume"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_policy_detail_volume" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_volume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="@{item.volume}"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/item_policy_detail_due"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_policy_detail_volume_title"
+            app:layout_constraintTop_toBottomOf="@+id/item_policy_detail_supports"
+            tools:text="2020년 약 10만명 지원 예정" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_due_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="@string/item_policy_detail_due_title"
+            android:textColor="#323232"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/item_policy_detail_due"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_policy_detail_due" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_policy_detail_due"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@{item.dueDate}"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/item_policy_detail_due_title"
+            app:layout_constraintTop_toBottomOf="@+id/item_policy_detail_volume"
+            tools:text="매월 1일~25일까지 접수/신청" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

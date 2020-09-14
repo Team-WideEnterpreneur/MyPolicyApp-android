@@ -4,6 +4,7 @@ import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
+import android.widget.TableRow
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.appcompat.widget.SwitchCompat
@@ -14,7 +15,8 @@ import com.skfo763.my_data_app.commondata.FadeVisibility
 import com.skfo763.my_data_app.component.BadgeTabLayout
 import com.skfo763.my_data_app.component.PolicyLabelView
 import com.skfo763.my_data_app.ext.DP
-import com.skfo763.my_data_app.ui.detail.data.PolicyInfoTab
+import com.skfo763.my_data_app.ui.detail.adapter.PolicyInfoTabAdapter
+import com.skfo763.my_data_app.ui.detail.data.PolicyDetailTabData
 import com.skfo763.my_data_app.ui.maintab.adapter.MainPagerAdapter
 import com.skfo763.my_data_app.ui.maintab.data.MainServiceFragmentList
 import com.skfo763.my_data_app.ui.maintab.data.MainServiceType
@@ -31,8 +33,8 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("infoList")
-    fun ViewPager2.setPolicyTab(serviceList: List<PolicyInfoTab>) {
-
+    fun ViewPager2.setPolicyTab(tabList: List<PolicyDetailTabData>) {
+        (this.adapter as? PolicyInfoTabAdapter)?.setTabList(tabList)
     }
 
     @JvmStatic
@@ -43,8 +45,8 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("policyInfoList")
-    fun BadgeTabLayout.setPolicyInfoTabList(tabList: List<String>) {
-        attachPolicyInfoTabLayout(tabList)
+    fun BadgeTabLayout.setPolicyInfoTabList(tabList: List<PolicyDetailTabData>) {
+        attachPolicyInfoTabLayout(tabList.map { it.title })
     }
 
     @JvmStatic
@@ -102,5 +104,28 @@ object BindingAdapter {
         setOnCheckedChangeListener { buttonView, isChecked ->
             onSwitchChanged(buttonView, isChecked)
         }
+    }
+
+    @JvmStatic
+    @BindingAdapter("visibilityUpDown")
+    fun View.setVisibilityWithUpDown(isVisible: Boolean) {
+        if(isVisible) {
+            this.visibility = View.VISIBLE
+            animate().translationY(0f).withEndAction {
+                this.visibility = View.VISIBLE
+            }
+        } else if(this.visibility == View.VISIBLE) {
+            animate().translationY(1000f).withEndAction {
+                this.visibility = View.GONE
+            }
+        } else {
+            this.visibility = View.GONE
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("rowBackground")
+    fun TableRow.setRowBackground(resId: Int) {
+        setBackgroundResource(resId)
     }
 }

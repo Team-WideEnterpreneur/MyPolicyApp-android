@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:onClick="@{(v) -> item.onItemClicked}">
+            android:onClick="@{(v) -> item.onItemClicked.invoke(item)}">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/my_data_item_category"

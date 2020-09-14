@@ -3,7 +3,6 @@ package com.skfo763.my_data_app.ui.mydata
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Rect
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skfo763.my_data_app.R
 import com.skfo763.my_data_app.databinding.FragmentMyDataBinding
 import com.skfo763.my_data_app.ext.DPInt
+import com.skfo763.repository.data.PolicyData
+import com.skfo763.repository.data.UserData
 import com.skfo763.storage.xls.XlsStorageManager
 
 
@@ -27,7 +28,9 @@ class MyDataFragment : Fragment(), IMyDataView {
     }
 
     lateinit var binding: FragmentMyDataBinding
-    override val xlsStorageManager by lazy { XlsStorageManager(requireContext()) }
+
+    override val xlsStorageManager: XlsStorageManager
+        get() = XlsStorageManager(requireContext())
 
     private val viewModel by viewModels<MyDataViewModel> { MyDataViewModel.Factory(this) }
 
@@ -76,7 +79,7 @@ class MyDataFragment : Fragment(), IMyDataView {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_data, container, false)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
         setRecyclerView()
@@ -100,22 +103,12 @@ class MyDataFragment : Fragment(), IMyDataView {
 
     private fun observeLiveData() {
         viewModel.myInfoData.observe(viewLifecycleOwner, {
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.support_file_type_dialog_title)
-                .setItems(R.array.support_download_type) { dialog, pos ->
-                    when (pos) {
-                        0 -> viewModel.saveXls(it.getMyInfoXlsData())
-                        1 -> viewModel.saveCsv(it.getMyInfoXlsData())
-                        2 -> viewModel.savePdf(it.getMyInfoPdfData())
-                        else -> Toast.makeText(
-                            requireContext(),
-                            "지원하지 않는 파일 포맷입니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }.create()
-                .show()
+            showDownloadFormatDialog<UserData>(it)
         })
+
+        viewModel.policyInfoData.observe(viewLifecycleOwner) {
+            showDownloadFormatDialog<PolicyData>(it)
+        }
 
         viewModel.fileUri.observe(viewLifecycleOwner, { uri ->
             uri?.first?.let {
@@ -128,5 +121,36 @@ class MyDataFragment : Fragment(), IMyDataView {
 
             }
         })
+    }
+
+    private fun<T> showDownloadFormatDialog(data: T) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(R.string.support_file_type_dialog_title)
+            .setItems(R.array.support_download_type) { dialog, pos ->
+                when(data) {
+                    is UserData ->onDownloadFormatDialogClicked(pos, data)
+                    is PolicyData -> onDownloadFormatDialogClicked(pos, data)
+                    else -> dialog.dismiss()
+                }
+            }.create()
+            .show()
+    }
+
+    private fun onDownloadFormatDialogClicked(pos: Int, userData: UserData) {
+        when (pos) {
+            0 -> viewModel.saveUserXls(userData)
+            1 -> viewModel.saveUserCsv(userData)
+            2 -> viewModel.saveUserPdf(userData)
+            else -> Toast.makeText(requireContext(), "지원하지 않는 파일 포맷입니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun onDownloadFormatDialogClicked(pos: Int, userData: PolicyData) {
+        when (pos) {
+            0 -> viewModel.savePolicyXls(userData)
+            1 -> viewModel.savePolicyCsv(userData)
+            2 -> viewModel.savePolicyPdf(userData)
+            else -> Toast.makeText(requireContext(), "지원하지 않는 파일 포맷입니다.", Toast.LENGTH_SHORT).show()
+        }
     }
 }

@@ -14,7 +14,10 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/data-converter-annotation" />
             <option value="$PROJECT_DIR$/data-converter-processor" />
+            <option value="$PROJECT_DIR$/fcm-notification" />
             <option value="$PROJECT_DIR$/intent-generator" />
+            <option value="$PROJECT_DIR$/remote" />
+            <option value="$PROJECT_DIR$/repository" />
             <option value="$PROJECT_DIR$/storage" />
           </set>
         </option>

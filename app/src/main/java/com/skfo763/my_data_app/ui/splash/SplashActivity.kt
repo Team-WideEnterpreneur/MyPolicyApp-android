@@ -11,7 +11,7 @@ import com.skfo763.my_data_app.ui.maintab.MainActivity
 class SplashActivity : AppCompatActivity(), ISplashView {
 
     lateinit var binding: ActivitySplashBinding
-    private val viewModel: SplashViewModel by viewModels { SplashViewModelFactory(this) }
+    private val viewModel: SplashViewModel by viewModels { SplashViewModel.Factory(this) }
 
     override val splashConstantText by lazy {
         ISplashView.Text(

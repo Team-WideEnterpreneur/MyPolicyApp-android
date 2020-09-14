@@ -21,7 +21,17 @@ class XlsStorageManager(private val context: Context) {
         workbook.createSheet(sheetName)
     }
 
-    fun setRow(data: List<XlsMyInfoData>, sheetName: String) {
+    fun setMyInfoRow(data: List<XlsMyInfoData>, sheetName: String) {
+        if(data.isEmpty()) return
+        val sheet = workbook.getSheet(sheetName)
+
+        addHeader(sheet, data[0])
+        data.forEachIndexed { index, myPolicyData ->
+            addRow(sheet, index+2, myPolicyData)
+        }
+    }
+
+    fun setPolicyInfoRow(data: List<XlsPolicyInfoData>, sheetName: String) {
         if(data.isEmpty()) return
         val sheet = workbook.getSheet(sheetName)
 
@@ -63,7 +73,26 @@ class XlsStorageManager(private val context: Context) {
         }
     }
 
+    private fun addHeader(sheet: HSSFSheet, value: XlsPolicyInfoData) {
+        value.getColumnList().apply {
+            sheet.createRow(0).createCell(0).setCellValue(tableName)
+            val row = sheet.createRow(1)
+            columnList.forEachIndexed { i, triple ->
+                row.createCell(i).setCellValue(triple.first)
+            }
+        }
+    }
+
+
     private fun addRow(sheet: HSSFSheet, rowIndex: Int, value: XlsMyInfoData) {
+        val row = sheet.createRow(rowIndex)
+
+        value.getColumnList().columnList.forEachIndexed { i, triple ->
+            row.createCell(i, CellType.STRING).setCellValue(triple.second.toString())
+        }
+    }
+
+    private fun addRow(sheet: HSSFSheet, rowIndex: Int, value: XlsPolicyInfoData) {
         val row = sheet.createRow(rowIndex)
 
         value.getColumnList().columnList.forEachIndexed { i, triple ->

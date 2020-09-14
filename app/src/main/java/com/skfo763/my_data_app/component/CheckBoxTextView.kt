@@ -15,6 +15,7 @@ import com.skfo763.my_data_app.R
 import com.skfo763.my_data_app.databinding.ViewCheckboxTextBinding
 import com.skfo763.my_data_app.ext.parseWithNullString
 import com.skfo763.my_data_app.ext.setTextCheckEmpty
+import com.skfo763.my_data_app.ui.agreement.AgreementActivity
 
 class CheckBoxTextView @JvmOverloads constructor(
     context: Context,
@@ -77,13 +78,11 @@ class CheckBoxTextView @JvmOverloads constructor(
     fun onFirstCheckBoxClicked() {
         if(_firstBoxChecked.value == true) {
             onCancel(this::switchToSecond)
+        } else if(confirmUrl.isNotEmpty()) {
+            context.startActivity(AgreementActivity.getIntent(context, confirmUrl))
+            switchToFirst()
         } else {
-            confirmUrl.parseWithNullString()?.let {
-                context.startActivity(Intent(Intent.ACTION_VIEW, it))
-                switchToFirst()
-            } ?: kotlin.run {
-                switchToFirst()
-            }
+            switchToFirst()
         }
     }
 

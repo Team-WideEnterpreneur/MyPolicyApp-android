@@ -11,12 +11,16 @@ import androidx.fragment.app.Fragment
 import com.skfo763.my_data_app.R
 import com.skfo763.my_data_app.ui.detail.PolicyDetailActivity
 import com.skfo763.my_data_app.ui.maintab.data.PolicyItem
+import com.skfo763.storage.xls.XlsStorageManager
 
 abstract class BasePolicyCategoryFragment<B: ViewDataBinding>(
     @LayoutRes private val layoutResId: Int = R.layout.fragment_base_policy_category
 ) : Fragment(), IBasePolicyView {
 
     lateinit var binding: B
+
+    override val xlsStorageManager
+        get() = XlsStorageManager(requireContext())
 
     override fun onCreateView(
         inflater: LayoutInflater,
