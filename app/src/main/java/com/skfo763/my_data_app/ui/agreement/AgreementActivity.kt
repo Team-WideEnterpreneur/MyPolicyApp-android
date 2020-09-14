@@ -49,6 +49,10 @@ class AgreementActivity : AppCompatActivity(), IAgreementView {
             viewModel.onRowClicked(it)
         }
 
+        binding.viewAgreementCert.publicCertPasswordConfirm.setOnClickListener {
+            viewModel.onCertifyClicked()
+        }
+
         viewModel.isLoading.observe(this) {
             binding.root.isEnabled = !it
         }

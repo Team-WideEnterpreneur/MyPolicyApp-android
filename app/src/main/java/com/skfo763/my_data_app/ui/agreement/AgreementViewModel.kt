@@ -54,7 +54,7 @@ class AgreementViewModel(private val view: IAgreementView) : ViewModel() {
         _certVisibility.value = false
     }
 
-    fun onCertifyClicked(v: View) {
+    fun onCertifyClicked() {
         _isLoading.postValue(true)
 
         compositeDisposable += Single.timer(1000L, TimeUnit.MILLISECONDS)
