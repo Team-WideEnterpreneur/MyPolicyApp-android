@@ -36,3 +36,4 @@
 
 
 ## 5. 동작 영상
+[![IMAGE](http://img.youtube.com/vi/fgzIuA8Dlt8/0.jpg)](http://www.youtube.com/watch?v=fgzIuA8Dlt8)
