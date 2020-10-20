@@ -1,13 +1,13 @@
 ![title](https://github.com/skfo763/MyPolicyApp-android/blob/master/.github/art/title.png)
 # 청년정책 골랐Zip 안드로이드 앱
 ### Overview
-[2020 마이데이터 비즈니스 아이디어 기획/개발 공모전](http://www.k-startup.go.kr/common/announcement/announcementDetail.do?mid=30004&bid=701&searchPostSn=118807&searchPrefixCode=BOARD_701_001&mid=30004&kid=0&sid=0) 출품을 위해, 서버 개발자 1인과 안드로이드 개발자 1인이 제작한 데모 애플리케이션입니다. 이 Repository는 안드로이드 클라이언트 사이드 코드를 정리한 Repository입니다. 서버쪽 코드는 [이 쪽]()을 확인하세요.
+[2020 마이데이터 비즈니스 아이디어 기획/개발 공모전](http://www.k-startup.go.kr/common/announcement/announcementDetail.do?mid=30004&bid=701&searchPostSn=118807&searchPrefixCode=BOARD_701_001&mid=30004&kid=0&sid=0) 출품을 위해, 서버 개발자 1인과 안드로이드 개발자 1인이 제작한 데모 애플리케이션입니다. 이 Repository는 안드로이드 클라이언트 사이드 코드를 정리한 Repository입니다. 서버쪽 코드는 [이 쪽](https://github.com/Team-WideEnterpreneur/MyPolicyApp-Server)을 확인하세요.
 
 
 ## 1. 팀 구성
 - 기획 : 김미라, 김수민
 - Android (Client)  : [skfo763](https://github.com/skfo763)
-- Server : [추후 입력]()
+- Server : [hjy5421](https://github.com/hjy5421)
 
 
 ## 2. 개발 기간
